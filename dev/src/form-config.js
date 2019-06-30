@@ -12,7 +12,8 @@ const FORM_CONFIG = {
       label: "Status",
       values: ["active", "error", "pending"]
     }
-  ]
+  ],
+  primaryButtonText: "Search"
 };
 
 export default FORM_CONFIG;

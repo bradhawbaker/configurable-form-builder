@@ -2,10 +2,51 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class ConfigurableForm extends Component {
-  render() {
-    let { title } = this.props;
+  
+constructor(props) {
+    super(props);
+}
 
-    return <h1>{title}</h1>;
+getFieldComponents = (fields) => {
+    let fieldComponents = fields.map( field => {
+        if (field.type === 'text') {
+            return (
+                <div>
+                    <label>{field.label}</label> <input type='text' name={field.id} />
+                </div>
+            );
+        } else if (field.type === 'enum') {
+            let options = [];
+            if (field.values) {
+                options = field.values.map( value => {
+                    return (<option key={value} value={value}>{value}</option>);
+                })
+            }
+            return (
+                <div>
+                    <label>{field.label}</label>  <select>
+                        {options}
+                    </select>
+                </div>
+            );
+        }
+    });
+    return fieldComponents;
+}
+  
+render() {
+    let { title, fields, primaryButtonText, primaryButtonCallback } = this.props;
+    let fieldComponents = this.getFieldComponents(fields);
+
+    return (
+        <div>
+            <h1>{title}</h1>
+            <form>
+                {fieldComponents}
+                <button onClick={primaryButtonCallback}>{ primaryButtonText ? primaryButtonText : 'Submit' }</button>
+            </form>
+        </div>
+    );
   }
 }
 export default ConfigurableForm;
