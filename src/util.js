@@ -1,13 +1,21 @@
 import React from 'react';
 
-import { FIELD_TYPES } from './ConfigurableFormConstants'
+import { 
+    FIELD_TYPES,
+    NO_SELECTION
+} from './ConfigurableFormConstants'
 
-const getFieldComponents = (fields) => {
+const buildFieldComponents = (fields, onChangeCallback) => {
     let fieldComponents = fields.map( field => {
         if (field.type === FIELD_TYPES.TEXT) {
             return (
-                <div>
-                    <label>{field.label}</label> <input type={FIELD_TYPES.TEXT} name={field.id} />
+                <div key={`${field.id}_div`}>
+                    <label>{field.label}</label> <input 
+                        key={field.id}
+                        id={field.id} 
+                        type={FIELD_TYPES.TEXT} 
+                        name={field.id} 
+                        onChange={onChangeCallback} />
                 </div>
             );
         } else if (field.type === FIELD_TYPES.ENUM) {
@@ -17,9 +25,17 @@ const getFieldComponents = (fields) => {
                     return (<option key={value} value={value}>{value}</option>);
                 })
             }
+            options.unshift(
+                <option key={`${field.id}_${NO_SELECTION}`} value=''> </option>
+            );
+
             return (
-                <div>
-                    <label>{field.label}</label>  <select>
+                <div key={`${field.id}_div`}>
+                    <label>{field.label}</label>  <select 
+                        defaultValue={NO_SELECTION}
+                         key={field.id}
+                         id={field.id}
+                         onChange={onChangeCallback}>
                         {options}
                     </select>
                 </div>
@@ -28,4 +44,4 @@ const getFieldComponents = (fields) => {
     });
     return fieldComponents;
 };
-export default getFieldComponents;
+export default buildFieldComponents;

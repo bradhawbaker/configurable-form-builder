@@ -4,3 +4,5 @@ export const FIELD_TYPES = {
     TEXT: 'text',
     ENUM: 'enum'
 }
+
+export const NO_SELECTION = "noSelection";
