@@ -67,7 +67,5 @@ ConfigurableForm.propTypes = {
     })
   ).isRequired,
   primaryButtonText: PropTypes.string,
-  primaryButtonCallback: PropTypes.func.isRequired,
-  secondaryButtonText: PropTypes.string,
-  secondaryButtonCallback: PropTypes.func
+  primaryButtonCallback: PropTypes.func.isRequired
 };
