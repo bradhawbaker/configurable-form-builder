@@ -50,8 +50,7 @@ primaryCallback = (submittedFormValueMap) => {
 ```
 in order to generate the following:
 
-![Sample Form Screenshot]
-(screenshot.png)
+![Sample Form Screenshot](/screenshot.png)
 
 ### Configuration Properties
 
