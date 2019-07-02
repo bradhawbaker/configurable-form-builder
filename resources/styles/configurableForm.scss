@@ -1,0 +1,42 @@
+@import './colors', './typography';
+
+$form-component-margin-bottom: 20px;
+$form-component-min-width: 200px;
+$form-select-arrow-width: 20px;
+
+body {
+    font-family: $font-stack;
+    font-size: $default-font-size;
+}
+
+form button.primary {
+    background-color: $primary-button-color;
+    color: $primary-button-text-color;
+    padding: 10px 40px;
+    font-size: $button-font-size;
+    border-radius: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type=text] {
+    margin-bottom: $form-component-margin-bottom;
+    min-width: $form-component-min-width;
+    border-radius: 3px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+select {
+    -webkit-appearance: none;
+    margin-bottom: $form-component-margin-bottom;
+    min-width: $form-component-min-width;
+    border-radius: 3px;
+    padding: 8px 10px;
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+    min-width: $form-component-min-width + $form-select-arrow-width;
+    outline: none;
+}
