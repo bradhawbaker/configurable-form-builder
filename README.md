@@ -49,6 +49,7 @@ primaryCallback = (submittedFormValueMap) => {
     primaryButtonCallback={this.primaryCallback} />
 ```
 in order to generate the following:
+
 ![Sample Form Screenshot]
 (screenshot.png)
 
@@ -80,6 +81,7 @@ primaryButtonText | String | No | Optional text to display in the primary form b
 primaryButtonCallback | Function | Yes | The callback method when the form is submitted
 
 Form Field Properties:
+
 Property Name | Type | Required | Description
 ------------- | ---- | -------- | -----------
 id | String | Yes | the unique identifier of the form field
