@@ -71,6 +71,7 @@ ConfigurableForm.propTypes = {
 ```
 
 Form properties:
+
 Property Name | Type | Required | Description
 ------------- | ---- | -------- | -----------
 title | String | No | Optional title to display above the form
