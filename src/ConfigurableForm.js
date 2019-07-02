@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import buildFieldComponents from './util';
 import { PRIMARY_BUTTON_DEFAULT_TEXT } from './ConfigurableFormConstants'
 
+import '../resources/styles/configurableForm.scss';
+
 class ConfigurableForm extends Component {
 
 constructor(props) {
@@ -46,7 +48,7 @@ render() {
             <h1>{title}</h1>
             <form>
                 {components}
-                <button onClick={() => primaryButtonCallback(formValueMap)}>
+                <button className='primary' onClick={() => primaryButtonCallback(formValueMap)}>
                     { primaryButtonText ? primaryButtonText : PRIMARY_BUTTON_DEFAULT_TEXT }
                 </button>
             </form>

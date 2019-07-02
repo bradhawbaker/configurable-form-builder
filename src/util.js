@@ -10,7 +10,8 @@ const buildFieldComponents = (fields, onChangeCallback) => {
         if (field.type === FIELD_TYPES.TEXT) {
             return (
                 <div key={`${field.id}_div`}>
-                    <label>{field.label}</label> <input 
+                    <label>{field.label}</label> 
+                    <input 
                         key={field.id}
                         id={field.id} 
                         type={FIELD_TYPES.TEXT} 
@@ -31,11 +32,12 @@ const buildFieldComponents = (fields, onChangeCallback) => {
 
             return (
                 <div key={`${field.id}_div`}>
-                    <label>{field.label}</label>  <select 
+                    <label>{field.label}</label>  
+                    <select 
                         defaultValue={NO_SELECTION}
-                         key={field.id}
-                         id={field.id}
-                         onChange={onChangeCallback}>
+                        key={field.id}
+                        id={field.id}
+                        onChange={onChangeCallback}>
                         {options}
                     </select>
                 </div>
