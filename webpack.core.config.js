@@ -24,6 +24,13 @@ module.exports = {
                     },
                     'eslint-loader'
                 ]
+            },
+            {
+              test: /\.(jpe?g|png|gif|svg)$/,
+              use: [
+                'file-loader'
+              ],
+              exclude: /node_modules/,
             }
         ]
     },

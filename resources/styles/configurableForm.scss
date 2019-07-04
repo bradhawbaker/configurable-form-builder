@@ -1,5 +1,7 @@
 @import './colors', './typography';
 
+$res-folder: '../icons';
+
 $form-component-margin-bottom: 20px;
 $form-component-min-width: 200px;
 $form-select-arrow-width: 20px;
@@ -33,11 +35,18 @@ input[type=text] {
 
 select {
     -webkit-appearance: none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
     margin-bottom: $form-component-margin-bottom;
     min-width: $form-component-min-width;
     border-radius: 3px;
     padding: 8px 10px;
-    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+    background-color: white;
+    background-image: url($res-folder + '/drop-down-arrow.svg');
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: 6%;
     min-width: $form-component-min-width + $form-select-arrow-width;
     outline: none;
 }
