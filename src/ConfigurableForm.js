@@ -1,64 +1,65 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-import buildFieldComponents from './util';
-import { PRIMARY_BUTTON_DEFAULT_TEXT } from './ConfigurableFormConstants'
+import buildFieldComponents from "./util";
+import { PRIMARY_BUTTON_DEFAULT_TEXT } from "./ConfigurableFormConstants";
 
-import '../resources/styles/configurableForm.scss';
+import "../resources/styles/configurableForm.scss";
 
 class ConfigurableForm extends Component {
-
-constructor(props) {
+  constructor(props) {
     super(props);
     this.onFieldChange = this.onFieldChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    let initialValues = props.hasOwnProperty('values') ? props.values : {}
+    let initialValues = props.hasOwnProperty("values") ? props.values : {};
     this.state = {
-        formValueMap: initialValues,
-        components: []
+      formValueMap: initialValues,
+      components: []
     };
-}
+  }
 
-onFieldChange(event) {
+  onFieldChange(event) {
     let { formValueMap } = this.state;
     let updatedFormValaueMap = JSON.parse(JSON.stringify(formValueMap));
-    if (event.target.value && event.target.value !== '') {
-        updatedFormValaueMap[event.target.id] = event.target.value;
+    if (event.target.value && event.target.value !== "") {
+      updatedFormValaueMap[event.target.id] = event.target.value;
     } else if (updatedFormValaueMap.hasOwnProperty(event.target.id)) {
-        delete updatedFormValaueMap[event.target.id]
+      delete updatedFormValaueMap[event.target.id];
     }
 
     this.setState({
-        formValueMap: updatedFormValaueMap
+      formValueMap: updatedFormValaueMap
     });
-}
+  }
 
-handleSubmit(event) {
+  handleSubmit(event) {
     let { primaryButtonCallback } = this.props;
     let { formValueMap } = this.state;
     event.preventDefault();
     primaryButtonCallback(formValueMap);
-}
+  }
 
-handle
-
-render() {
+  render() {
     let { title, primaryButtonText, fields } = this.props;
     let { formValueMap } = this.state;
-    let fieldComponents = buildFieldComponents(fields, formValueMap, this.onFieldChange);
-    
+    let fieldComponents = buildFieldComponents(
+      fields,
+      formValueMap,
+      this.onFieldChange
+    );
+
     return (
-        <div className='configurable-form-builder'>
-            {title &&
-                <h1>{title}</h1>
-            }
-            <form>
-                {fieldComponents}
-                <button className='primary' onClick={this.handleSubmit}>
-                    { primaryButtonText ? primaryButtonText : PRIMARY_BUTTON_DEFAULT_TEXT }
-                </button>
-            </form>
-        </div>
+      <div className="configurable-form-builder">
+        {title && <h1>{title}</h1>}
+        <form>
+          {fieldComponents}
+          <button className="primary" onClick={this.handleSubmit}>
+            {primaryButtonText
+              ? primaryButtonText
+              : PRIMARY_BUTTON_DEFAULT_TEXT}
+          </button>
+        </form>
+      </div>
     );
   }
 }
