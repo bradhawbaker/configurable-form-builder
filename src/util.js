@@ -5,7 +5,7 @@ import {
     NO_SELECTION
 } from './ConfigurableFormConstants'
 
-const buildFieldComponents = (fields, onChangeCallback) => {
+const buildFieldComponents = (fields, values, onChangeCallback) => {
     let fieldComponents = fields.map( field => {
         if (field.type === FIELD_TYPES.TEXT) {
             return (
@@ -16,6 +16,7 @@ const buildFieldComponents = (fields, onChangeCallback) => {
                         id={field.id} 
                         type={FIELD_TYPES.TEXT} 
                         name={field.id} 
+                        value={values.hasOwnProperty(field.id) ? values[field.id] : ''}
                         onChange={onChangeCallback} />
                 </div>
             );

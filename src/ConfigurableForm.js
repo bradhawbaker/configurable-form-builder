@@ -11,8 +11,10 @@ class ConfigurableForm extends Component {
 constructor(props) {
     super(props);
     this.onFieldChange = this.onFieldChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    let initialValues = props.hasOwnProperty('values') ? props.values : {}
     this.state = {
-        formValueMap: {},
+        formValueMap: initialValues,
         components: []
     };
 }
@@ -31,24 +33,28 @@ onFieldChange(event) {
     });
 }
 
-componentDidMount() {
-    let { fields } = this.props;
-    let fieldComponents = buildFieldComponents(fields, this.onFieldChange);
-    this.setState({
-        components: fieldComponents
-    });
+handleSubmit(event) {
+    let { primaryButtonCallback } = this.props;
+    let { formValueMap } = this.state;
+    event.preventDefault();
+    primaryButtonCallback(formValueMap);
 }
 
+handle
+
 render() {
-    let { title, primaryButtonText, primaryButtonCallback } = this.props;
-    let { formValueMap, components } = this.state;
+    let { title, primaryButtonText, fields } = this.props;
+    let { formValueMap } = this.state;
+    let fieldComponents = buildFieldComponents(fields, formValueMap, this.onFieldChange);
     
     return (
-        <div>
-            <h1>{title}</h1>
+        <div className='configurable-form-builder'>
+            {title &&
+                <h1>{title}</h1>
+            }
             <form>
-                {components}
-                <button className='primary' onClick={() => primaryButtonCallback(formValueMap)}>
+                {fieldComponents}
+                <button className='primary' onClick={this.handleSubmit}>
                     { primaryButtonText ? primaryButtonText : PRIMARY_BUTTON_DEFAULT_TEXT }
                 </button>
             </form>
@@ -68,6 +74,7 @@ ConfigurableForm.propTypes = {
       values: PropTypes.arrayOf(PropTypes.string)
     })
   ).isRequired,
+  values: PropTypes.object,
   primaryButtonText: PropTypes.string,
   primaryButtonCallback: PropTypes.func.isRequired
 };

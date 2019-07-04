@@ -48,6 +48,6 @@ module.exports = merge(core, {
         // enable hot module replacement
         hot: true,
         // launce a browser by default on start up
-        open: 'Google Chrome'
+        open: 'chrome'
     }
 });

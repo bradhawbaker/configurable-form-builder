@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Basic snapshot 1`] = `
-<div>
+<div
+  className="configurable-form-builder"
+>
   <h1>
     Sample Config Form Title
   </h1>
@@ -15,6 +17,7 @@ exports[`Basic snapshot 1`] = `
         name="id"
         onChange={[Function]}
         type="text"
+        value=""
       />
     </div>
     <div>
