@@ -79,7 +79,7 @@ fields | Array | Yes | a list of form fields to be rendered
 primaryButtonText | String | No | Optional text to display in the primary form button (default value is 'Submit')
 primaryButtonCallback | Function | Yes | The callback method when the form is submitted
 
-Form Field Properties:
+Field Properties:
 
 Property Name | Type | Required | Description
 ------------- | ---- | -------- | -----------
