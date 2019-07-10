@@ -11,9 +11,15 @@ const FORM_CONFIG = {
       type: "enum",
       label: "Status",
       values: ["active", "error", "pending"]
+    },
+    {
+      id: "non-text-attr",
+      type: "long",
+      label: "Non-Text Attr"
     }
   ],
-  primaryButtonText: "Search"
+  primaryButtonText: "Search",
+  noAttrText: "No searchable attributes for selected entity types"
 };
 
 export default FORM_CONFIG;
