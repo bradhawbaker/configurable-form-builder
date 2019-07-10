@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import buildFieldComponents from "./util";
-import { PRIMARY_BUTTON_DEFAULT_TEXT } from "./ConfigurableFormConstants";
+import {
+  PRIMARY_BUTTON_DEFAULT_TEXT,
+  NO_FORM_ATTRIBUTES
+} from "./ConfigurableFormConstants";
 
 import "../resources/styles/configurableForm.scss";
 
@@ -40,7 +43,7 @@ class ConfigurableForm extends Component {
   }
 
   render() {
-    let { title, primaryButtonText, fields } = this.props;
+    let { title, primaryButtonText, fields, noAttrText } = this.props;
     let { formValueMap } = this.state;
     let fieldComponents = buildFieldComponents(
       fields,
@@ -51,14 +54,19 @@ class ConfigurableForm extends Component {
     return (
       <div className="configurable-form-builder">
         {title && <h1>{title}</h1>}
-        <form>
-          {fieldComponents}
-          <button className="primary" onClick={this.handleSubmit}>
-            {primaryButtonText
-              ? primaryButtonText
-              : PRIMARY_BUTTON_DEFAULT_TEXT}
-          </button>
-        </form>
+        {fields.length > 0 && (
+          <form>
+            {fieldComponents}
+            <button className="primary" onClick={this.handleSubmit}>
+              {primaryButtonText
+                ? primaryButtonText
+                : PRIMARY_BUTTON_DEFAULT_TEXT}
+            </button>
+          </form>
+        )}
+        {fields.length === 0 && (
+          <p>{noAttrText ? noAttrText : NO_FORM_ATTRIBUTES}</p>
+        )}
       </div>
     );
   }
@@ -77,5 +85,6 @@ ConfigurableForm.propTypes = {
   ).isRequired,
   values: PropTypes.object,
   primaryButtonText: PropTypes.string,
-  primaryButtonCallback: PropTypes.func.isRequired
+  primaryButtonCallback: PropTypes.func.isRequired,
+  noAttrText: PropTypes.string
 };
