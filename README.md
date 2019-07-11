@@ -33,20 +33,21 @@ primaryCallback = (submittedFormValueMap) => {
 <ConfigurableForm 
     title="Sample Config Form Title",
     fields=[
-        {
-            id: "id",
-            type: "text",
-            label: "Name"
-        },
-        {
-            id: "status",
-            type: "enum",
-            label: "Status",
-            values: ["active", "error", "pending"]
-        }
-    ],
-    primaryButtonText: "Search" 
-    primaryButtonCallback={this.primaryCallback} />
+    {
+      id: "id",
+      type: "text",
+      label: "Name"
+    },
+    {
+      id: "status",
+      type: "enum",
+      label: "Status",
+      values: ["active", "error", "pending"]
+    }
+  ],
+  primaryButtonText: "Search",
+  noAttrText: "No searchable attributes for selected entity types",
+  primaryButtonCallback={this.primaryCallback} />
 ```
 in order to generate the following:
 
@@ -65,25 +66,36 @@ ConfigurableForm.propTypes = {
       values: PropTypes.arrayOf(PropTypes.string)
     })
   ).isRequired,
+  values: PropTypes.object,
   primaryButtonText: PropTypes.string,
-  primaryButtonCallback: PropTypes.func.isRequired
+  primaryButtonCallback: PropTypes.func.isRequired,
+  noAttrText: PropTypes.string
 };
 ```
 
 Form properties:
 
-Property Name | Type | Required | Description
-------------- | ---- | -------- | -----------
-title | String | No | Optional title to display above the form
-fields | Array | Yes | a list of form fields to be rendered
-primaryButtonText | String | No | Optional text to display in the primary form button (default value is 'Submit')
-primaryButtonCallback | Function | Yes | The callback method when the form is submitted
+Property Name | Type | Required | Description | Default
+------------- | ---- | -------- | ----------- | -------
+title | String | No | Optional title to display above the form | < just hides title >
+fields | Array | Yes | a list of form fields to be rendered | N/A
+values | Object | No | an object mapping the value set for each attribute | N/A
+primaryButtonText | String | No | Optional text to display in the primary form button | "Submit"
+primaryButtonCallback | Function | Yes | The callback method when the form is submitted | N/A
+noAttrText | String | No | Text to display when there are no attribute fileds for the form to render | "No available attributes"
 
 Field Properties:
 
 Property Name | Type | Required | Description
 ------------- | ---- | -------- | -----------
 id | String | Yes | the unique identifier of the form field
-type | String | Yes | the type of the form field (valid values: TEXT, ENUM)
+type | String | Yes | the type of the form field
 label | String | No | Optional text to display as the form field label
 values | Array | No | optional list of values for ENUM type fields
+
+Valid Field Property Types:
+
+Type | Rendered Component
+---- | ------------------
+ENUM | Dropdown 
+Anything Else | Textfield
