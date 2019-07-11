@@ -53,6 +53,8 @@ in order to generate the following:
 
 ![Sample Form Screenshot](/screenshot.png)
 
+If no 'title' property is configured, there will be no title displayed.
+
 ### Configuration Properties
 
 ```
@@ -77,7 +79,7 @@ Form properties:
 
 Property Name | Type | Required | Description | Default
 ------------- | ---- | -------- | ----------- | -------
-title | String | No | Optional title to display above the form | < just hides title >
+title | String | No | Optional title to display above the form | N/A
 fields | Array | Yes | a list of form fields to be rendered | N/A
 values | Object | No | an object mapping the value set for each attribute | N/A
 primaryButtonText | String | No | Optional text to display in the primary form button | "Submit"
