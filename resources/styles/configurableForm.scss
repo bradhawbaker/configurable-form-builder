@@ -11,7 +11,7 @@ body {
     font-size: $default-font-size;
 }
 
-form button.primary {
+.configurable-form-builder form button.primary {
     background-color: $primary-button-color;
     color: $primary-button-text-color;
     padding: 5px 10px;
@@ -20,12 +20,12 @@ form button.primary {
     outline: none;
 }
 
-label {
+.configurable-form-builder label {
     display: block;
     margin-bottom: 10px;
 }
 
-input[type=text] {
+.configurable-form-builder input[type=text] {
     margin-bottom: $form-component-margin-bottom;
     width: 85%;
     min-width: $form-input-min-width;
@@ -34,7 +34,7 @@ input[type=text] {
     outline: none;
 }
 
-select {
+.configurable-form-builder select {
     -webkit-appearance: none;
     -moz-appearance:none;
     -ms-appearance:none;
