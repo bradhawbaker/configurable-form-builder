@@ -19,7 +19,8 @@ const FORM_CONFIG = {
     }
   ],
   primaryButtonText: "Search",
-  noAttrText: "No searchable attributes for selected entity types"
+  noAttrText: "No searchable attributes for selected entity types",
+  breakpoints: { 350: 1, 750: 2, 900: 3 }
 };
 
 export default FORM_CONFIG;

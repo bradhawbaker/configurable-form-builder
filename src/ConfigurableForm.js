@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import buildFieldComponents from "./util";
 import {
@@ -43,7 +44,13 @@ class ConfigurableForm extends Component {
   }
 
   render() {
-    let { title, primaryButtonText, fields, noAttrText } = this.props;
+    let {
+      title,
+      primaryButtonText,
+      fields,
+      noAttrText,
+      breakpoints
+    } = this.props;
     let { formValueMap } = this.state;
     let fieldComponents = buildFieldComponents(
       fields,
@@ -56,17 +63,15 @@ class ConfigurableForm extends Component {
         {title && <h1>{title}</h1>}
         {fields.length > 0 && (
           <form>
-            {fieldComponents}
+            <ResponsiveMasonry columnsCountBreakPoints={breakpoints}>
+              <Masonry>{fieldComponents}</Masonry>
+            </ResponsiveMasonry>
             <button className="primary" onClick={this.handleSubmit}>
-              {primaryButtonText
-                ? primaryButtonText
-                : PRIMARY_BUTTON_DEFAULT_TEXT}
+              {primaryButtonText}
             </button>
           </form>
         )}
-        {fields.length === 0 && (
-          <p>{noAttrText ? noAttrText : NO_FORM_ATTRIBUTES}</p>
-        )}
+        {fields.length === 0 && <p>{noAttrText}</p>}
       </div>
     );
   }
@@ -82,9 +87,16 @@ ConfigurableForm.propTypes = {
       label: PropTypes.string,
       values: PropTypes.arrayOf(PropTypes.string)
     })
-  ).isRequired,
+  ),
   values: PropTypes.object,
   primaryButtonText: PropTypes.string,
   primaryButtonCallback: PropTypes.func.isRequired,
-  noAttrText: PropTypes.string
+  noAttrText: PropTypes.string,
+  breakpoints: PropTypes.object
+};
+ConfigurableForm.defaultProps = {
+  fields: [],
+  primaryButtonText: PRIMARY_BUTTON_DEFAULT_TEXT,
+  noAttrText: NO_FORM_ATTRIBUTES,
+  breakpoints: {}
 };
