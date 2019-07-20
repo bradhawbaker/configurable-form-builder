@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import Button from "catalog-zero";
 
 import buildFieldComponents from "./util";
 import {
@@ -66,9 +67,7 @@ class ConfigurableForm extends Component {
             <ResponsiveMasonry columnsCountBreakPoints={breakpoints}>
               <Masonry>{fieldComponents}</Masonry>
             </ResponsiveMasonry>
-            <button className="primary" onClick={this.handleSubmit}>
-              {primaryButtonText}
-            </button>
+            <Button onClick={this.handleSubmit}>{primaryButtonText}</Button>
           </form>
         )}
         {fields.length === 0 && <p>{noAttrText}</p>}
