@@ -8,7 +8,7 @@ import {
   NO_FORM_ATTRIBUTES
 } from "./ConfigurableFormConstants";
 
-import "../resources/styles/configurableForm.scss";
+import styles from "../resources/styles/configurableForm.scss";
 
 class ConfigurableForm extends Component {
   constructor(props) {
@@ -59,14 +59,14 @@ class ConfigurableForm extends Component {
     );
 
     return (
-      <div className="configurable-form-builder">
+      <div className={styles.configurableFormBuilder}>
         {title && <h1>{title}</h1>}
         {fields.length > 0 && (
           <form>
             <ResponsiveMasonry columnsCountBreakPoints={breakpoints}>
               <Masonry>{fieldComponents}</Masonry>
             </ResponsiveMasonry>
-            <button className="primary" onClick={this.handleSubmit}>
+            <button className={styles.primary} onClick={this.handleSubmit}>
               {primaryButtonText}
             </button>
           </form>
