@@ -1,0 +1,30 @@
+@import './themeColors', './themeTypography';
+
+$res-folder: '../../resources/icons';
+
+$form-component-margin-bottom: 20px;
+$form-input-min-width: 100px;
+$form-select-arrow-width: 20px;
+
+.configForm-configurableFormBuilder {
+    font-family: $font-stack;
+    font-size: $default-font-size;
+    font-weight: bold;
+}
+
+.configForm-configurableFormBuilder form button.configForm-primary {
+    background-color: $primary-button-color;
+    color: $primary-button-text-color;
+    padding: 10px 40px;
+    font-size: $button-font-size;
+    border-radius: 15px;
+    outline: none;
+}
+
+.configForm-configurableFormBuilder select {
+    padding: 10px 10px;
+}
+.configForm-configurableFormBuilder input[type=text] {
+    border-radius: 10px;
+    padding: 10px 0px;
+}
