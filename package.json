@@ -1,6 +1,6 @@
 {
   "name": "configurable-form-builder",
-  "version": "1.4.1",
+  "version": "2.0.0",
   "description": "Build React based form via configuration file",
   "main": "/dist/configurable-form-builder.bundle.js",
   "scripts": {
