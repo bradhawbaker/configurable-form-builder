@@ -6,12 +6,12 @@ $form-component-margin-bottom: 20px;
 $form-input-min-width: 100px;
 $form-select-arrow-width: 20px;
 
-body {
+.configurableFormBuilder {
     font-family: $font-stack;
     font-size: $default-font-size;
 }
 
-.configurable-form-builder form button.primary {
+.configurableFormBuilder form button.primary {
     background-color: $primary-button-color;
     color: $primary-button-text-color;
     padding: 5px 10px;
@@ -20,12 +20,12 @@ body {
     outline: none;
 }
 
-.configurable-form-builder label {
+.configurableFormBuilder label {
     display: block;
     margin-bottom: 10px;
 }
 
-.configurable-form-builder input[type=text] {
+.configurableFormBuilder input[type=text] {
     margin-bottom: $form-component-margin-bottom;
     width: 85%;
     min-width: $form-input-min-width;
@@ -34,7 +34,7 @@ body {
     outline: none;
 }
 
-.configurable-form-builder select {
+.configurableFormBuilder select {
     -webkit-appearance: none;
     -moz-appearance:none;
     -ms-appearance:none;

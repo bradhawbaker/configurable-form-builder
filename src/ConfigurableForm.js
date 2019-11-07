@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import { composeThemeFromProps } from "@css-modules-theme/react";
 
 import buildFieldComponents from "./util";
 import {
@@ -8,7 +9,7 @@ import {
   NO_FORM_ATTRIBUTES
 } from "./ConfigurableFormConstants";
 
-import "../resources/styles/configurableForm.scss";
+import styles from "../resources/styles/configurableForm.scss";
 
 class ConfigurableForm extends Component {
   constructor(props) {
@@ -57,16 +58,19 @@ class ConfigurableForm extends Component {
       formValueMap,
       this.onFieldChange
     );
+    const theme = composeThemeFromProps(styles, this.props, {
+      compose: "Replace"
+    });
 
     return (
-      <div className="configurable-form-builder">
+      <div className={theme.configurableFormBuilder}>
         {title && <h1>{title}</h1>}
         {fields.length > 0 && (
           <form>
             <ResponsiveMasonry columnsCountBreakPoints={breakpoints}>
               <Masonry>{fieldComponents}</Masonry>
             </ResponsiveMasonry>
-            <button className="primary" onClick={this.handleSubmit}>
+            <button className={theme.primary} onClick={this.handleSubmit}>
               {primaryButtonText}
             </button>
           </form>
