@@ -1,25 +1,32 @@
 # Configurable Form Builder
 
 ## Overview
+
 The Configurable Form Builder allows the creation of a React based forms via a JSON configuration file.
 
+[CHANGELOG.md](CHANGELOG.md) contains Release Notes for this package.
+
+[CONTRIBUTING.md](CONTRIBUTING.md) contains guidelines on how to help improve this package.
+
 ## Installation
+
 Run the following NPM command to install:
 
-```
+```bash
 > npm install --save configurable-form-builder
 ````
 
 Run the following NPM command to launch a sample demo:
 
-```
+```bash
 > npm start
 ```
 
 ## Usage
+
 The Configurable Form Builder can be used as follows:
 
-```
+```jsx
 import ConfigurableForm from 'configurable-form-builder';
 
 ...
@@ -30,9 +37,9 @@ primaryCallback = (submittedFormValueMap) => {
 
 ...
 
-<ConfigurableForm 
-    title="Sample Config Form Title",
-    fields=[
+<ConfigurableForm
+  title="Sample Config Form Title"
+  fields={[
     {
       id: "id",
       type: "text",
@@ -44,12 +51,13 @@ primaryCallback = (submittedFormValueMap) => {
       label: "Status",
       values: ["active", "error", "pending"]
     }
-  ],
-  primaryButtonText: "Search",
-  noAttrText: "No searchable attributes for selected entity types",
-  breakpoints: {350: 1, 750: 2, 900: 3},
+  ]}
+  primaryButtonText="Search"
+  noAttrText="No searchable attributes for selected entity types"
+  breakpoints={{350: 1, 750: 2, 900: 3}}
   primaryButtonCallback={this.primaryCallback} />
 ```
+
 in order to generate the following:
 
 ![Sample Form Screenshot](/screenshot.png)
@@ -57,9 +65,10 @@ in order to generate the following:
 If no 'title' property is configured, there will be no title displayed.
 
 ### Responsiveness
+
 By default the form shall display all of it's attribute files in a single column. It is possible to spread the form fields out over multiple columns while keeping it responsive to varying screen sizes. By using the 'breakpoints' property, the form can be configured to spread it's content over a number of columns (order is dictated by the order of the 'fields' property).
 
-Example: 
+Example:
 The following properties setting will render all fields in a single column when the form is 350px, 2 columns when 750px wide and 3 columns when 900px or more
 breakpoints: {350: 1, 750: 2, 900: 3}
 
@@ -69,7 +78,7 @@ breakpoints: {350: 1, 750: 2, 900: 3}
 
 ### Configuration Properties
 
-```
+```jsx
 ConfigurableForm.propTypes = {
   title: PropTypes.string,
   fields: PropTypes.arrayOf(
@@ -120,5 +129,5 @@ Valid Field Property Types:
 
 Type | Rendered Component
 ---- | ------------------
-ENUM | Dropdown 
+ENUM | Dropdown
 Anything Else | Textfield
